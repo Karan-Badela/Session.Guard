@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SessionGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  <link rel="icon" href="img1.png" type="image/png">
+  <style>
+    :root {
+      --dark-bg: #0d1117;
+      --light-bg: #ffffff;
+      --dark-text: #c9d1d9;
+      --light-text: #24292e;
+      --primary: #facc15;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .navbar {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      z-index: 1;
+    }
+
+    .logo img {
+      height: 100px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out forwards;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .input-box {
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .cta {
+      margin-top: 2rem;
+    }
+
+    .cta img {
+      height: 45px;
+      transition: transform 0.3s;
+    }
+
+    .cta img:hover {
+      transform: scale(1.05);
+    }
+
+    .description {
+  background-color: #2e2e2e; /* solid dark grey */
+  color: white;
+  padding: 3rem 1rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.description-inner {
+  max-width: 1000px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3); /* optional dark overlay inside */
+  padding: 3rem;
+  border-radius: 20px;
+}
+
+.description h2 {
+  font-size: 1.75rem;
+  margin-top: 2rem;
+}
+
+.description ul {
+  margin-left: 1rem;
+  list-style-type: none;
+}
+
+
+    .footer {
+      margin-top: 3rem;
+      color: black;
+      background-color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .footer a {
+      color: black;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer img {
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+  <script defer>
+    let safeToWarn = false;
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector(".input-box");
+
+      input.addEventListener("input", () => {
+        safeToWarn = true;
+      });
+
+      window.addEventListener("beforeunload", function (e) {
+        if (safeToWarn) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay"></div>
+    <header class="navbar">
+      <a href="index.html" class="logo">
+        <img src="img1.png" alt="SessionGuard Logo">
+      </a>
+    </header>
+    <main class="hero-content">
+      <h1 class="title">Protect your session.</h1>
+      <p class="subtitle">Avoid closing important browser tabs with smart alerts.</p>
+      <input type="text" placeholder="Start typing here..." class="input-box" />
+      <div class="cta">
+        <a href="https://buymeacoffee.com/session.guard" target="_blank">
+          <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="45" alt="Buy Me a Coffee">
+        </a>
+      </div>
+    </main>
+  </div>
+<section class="description" style="
+  padding: 2rem;
+  color: rgb(255, 255, 255);
+  max-width: 100%;
+  margin: 0;
+  background-color: aqua;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  background: url('df3f2d64-f911-4e4c-a751-5663221a3a3f.png') no-repeat center center / cover;
+">
+  <div style="max-width: 2000px; margin: auto; background-color: rgba(65, 39, 39, 0.6); padding: 3rem; border-radius: 20px;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">What is SessionGuard?</h2>
+    <p>
+      Have you ever lost work because you accidentally closed your browser tab? Whether you're filling out a form, writing an email, or researching, a quick click on <strong>Alt + F4</strong> can ruin everything. 
+      <strong>SessionGuard</strong> was built to solve that problem.
+    </p>
+
+    <h2 style="font-size: 1.75rem; margin-top: 2rem;">How Does It Work?</h2>
+    <p>
+      It shows a warning popup before you accidentally close your browser tab—like Google Forms does. It's lightweight, fast, and perfect for people who want to protect their online tasks.
+    </p>
+
+    <h2 style="font-size: 1.75rem; margin-top: 2rem;">Who Should Use It?</h2>
+    <ul style="margin-left: 1rem;">
+      <li>📚 Students filling long assignments or forms</li>
+      <li>👨‍💻 Professionals using internal tools</li>
+      <li>📒 Researchers working with lots of tabs</li>
+      <li>🧠 Anyone who hates losing progress</li>
+    </ul>
+
+    <h2 style="font-size: 1.75rem; margin-top: 2rem;">Why We Built It</h2>
+    <p>
+      At our old job, people lost work all the time due to accidental tab closes. SessionGuard is our fix—a small tool that saves your time and sanity.
+    </p>
+
+    <p style="margin-top: 2rem;">
+      Like the tool? <a href="https://buymeacoffee.com/session.guard" style="color: #facc15; text-decoration: underline;">Support us here</a>.
+    </p>
+  </div>
+</section>
+
+
+  <div class="footer">
+    <a href="about.html" target="_blank" rel="noopener noreferrer">About Us</a>
+    <a href="contact.html" target="_blank" rel="noopener noreferrer">Contact Us</a>
+    <a href="privacy.html" target="_blank">Privacy Policy</a>
+    <a href="terms.html" target="_blank">Terms of Service</a>
+    <a href="https://www.instagram.com/session.guard/" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" width="24" alt="Instagram">
+    </a>
+    <a href="https://x.com/Session_Guard" target="_blank" rel="noopener noreferrer">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" width="24" alt="X">
+    </a>
+  </div>
+</body>
+</html>
